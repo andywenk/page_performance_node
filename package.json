@@ -1,0 +1,23 @@
+{
+  "name": "page_performance_node",
+  "description": "page performance tool to measure the rendering performance of websites",
+  "author": "Andy Wenk <andy@nms.de> (http://www.nms.de)",
+  "version": "0.0.1",
+  "homepage": "https://github.com/andywenk/page_performance_node",
+  "repository" : {
+    "type" : "git",
+    "url" : "http://github.com/andywenk/page_performance_node.git"
+  },
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.x",
+    "phantomjs": "*",
+    "coffee-script": "*",
+    "jade": "*",
+    "less-middleware": "*"
+  }
+}
