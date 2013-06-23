@@ -25,5 +25,6 @@ app.configure 'development', ->
 app.get '/', routes.index
 
 server = http.createServer app
-server.listen app.get 'port', ->
-  console.log("Express server listening on port #{app.get('port')}")
+
+server.listen app.get('port'), ->
+  console.log "Express server listening on port #{app.get('port')}"

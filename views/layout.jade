@@ -2,6 +2,46 @@ doctype 5
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-responsive.css')
   body
-    block content
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          button.btn.btn-navbar(data-toggle="collapse", data-target=".nav-collapse") 
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.brand(href='#') Pageperformance Node
+          .nav-collapse.collapse
+            p.navbar-text.pull-right Logged in as Nobody
+            ul.nav
+              li
+                a(href="#") Home
+              li
+                a(href="#") About
+              li
+                a(href="#") Contact
+
+    .container-fluid
+      .row-fluid
+        .span3
+          .well.sidebar-nav
+            ul.nav.nav-list
+            li.nav-header Navigation
+              li
+                a(href="#") Home
+              li
+                a(href="#") New Job
+              li
+                a(href="#") Results
+        .span9
+          .hero-unit
+            h1 Pageperformance Node
+          .row-fluid
+            .span9
+              block content
+
+    script(src='http://code.jquery.com/jquery.js')
+    script(src='/javascripts/bootstrap.min.js')
