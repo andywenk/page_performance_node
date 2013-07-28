@@ -1,5 +1,6 @@
 express = require 'express'
-routes = require './routes'
+pages = require './routes/pages'
+jobs = require './routes/jobs'
 http = require 'http'
 path = require 'path'
 
@@ -22,7 +23,11 @@ app.configure ->
 app.configure 'development', ->
   app.use express.errorHandler()
 
-app.get '/', routes.index
+app.get '/', pages.index
+app.get '/contact', pages.contact
+app.get '/about', pages.about
+app.get '/jobs/new', jobs.new
+app.get '/jobs/show/:id', jobs.show
 
 server = http.createServer app
 
