@@ -18,6 +18,7 @@
     "phantomjs": "*",
     "coffee-script": "*",
     "jade": "*",
-    "less-middleware": "*"
+    "less-middleware": "*",
+    "express-validator": "*"
   }
 }

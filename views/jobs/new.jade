@@ -1,4 +1,52 @@
 extends ../layout
 
 block content
-  h1= title
+  h3 Create a new job
+
+  p In this section, you will create a new job. Fill in the following form and hit start job.
+  p &nbsp;
+
+  form.form-horizontal(action="/jobs/create", method="post")
+    if errors
+      div.alert.alert-block
+        h4 There are some errors:
+        - for (var err in errors)
+          = errors[err].param
+          &nbsp;
+          = errors[err].msg
+          br
+
+    div.control-group
+      label.control-label(for="job-name") job-name:
+      div.controls
+        input.input-xlarge(id="job-name", type="text", value="", placeholder="what's the job-name?", name="job-name")
+    div.control-group
+      label.control-label(for="wait") wait-time:
+      div.controls
+        div.input-append
+          input.input-xlarge(id="wait", type="text", value="", placeholder="what is the wait-time between request?", name="wait")
+          span.add-on msec
+    div.control-group
+      label.control-label(for="repeat") repeats:
+      div.controls
+        div.input-append
+          input.input-xlarge(id="repeat", type="text", value="", placeholder="how many repeats for each request?", name="wait")
+          span.add-on times
+    div.control-group
+      div.controls
+        label.checkbox 
+          input(id="scripttags", type="checkbox", name="scripttags", value="1") 
+          Count Count the amount of scripttags?
+    div.control-group
+      div.controls
+        label.checkbox
+          input(id="iframess", type="checkbox", name="iframes", value="1") 
+          Count Count the amount of iframes?
+    div.control-group
+      label.control-label(for="urls") urls:
+      div.controls
+        textarea(id="urls", rows="4", cols="5", style="width:317px")
+    div.control-group
+      div.controls
+        button.btn(type="submit") create new job!
+
