@@ -1,36 +1,35 @@
 class Phantom
   constructor: (url) ->
-    @url = url
+    @url = @sanitize(url)
+    @response_time = 0
 
-  request: ->
-    childProcess = require('child_process')
-    path = require('path')
-    phantomjs = require('phantomjs')
-    binPath = phantomjs.path
+  sanitize: (url) ->
+    unless url.match(/^https?/)
+      return "http://#{url}"
+    url
 
-    childArgs = [
-      path.join(__dirname, 'loadspeed.js')
-      #'some other argument (passed to phantomjs script)'
-    ]
+  request: (fn) ->
+    portscanner = require 'portscanner'
+    phantom = require 'phantom'
 
-    childProcess.execFile(binPath, childArgs, (err, stdout, stderr) ->
-      console.log err
-      console.log stdout
-      console.log stderr
+    portscanner.findAPortNotInUse(40000, 60000, 'localhost', 
+      (err, freeport) =>
+        phantom.create({port: freeport},
+          (ph) =>
+            ph.createPage (page) =>
+              start = Date.now()
+
+              page.open @url, (status) =>
+                console.log "[Phantom]: opened page: #{@url} on port #{freeport}"
+                if status != 'success'
+                  console.log "[Phantom]: failed to load the address #{@url}"
+                else
+                  @response_time = Date.now() - start
+                  console.log "[Phantom]: Loading time #{@response_time} msec"
+                ph.exit()
+                fn()
+        )
+      , null, null
     )
-    # #page = require('webpage').create()
-    # t = Date.now()
-    # response_time = 0
-    
-    # open(@url, (status) ->
-    #   unless status == 'success'
-    #     console.log('FAIL to load the address')
-    #   else
-    #     response_time = Date.now() - t
-    #   phantom.exit()
-    # )
-    # response_time
 
 module.exports = Phantom
-
-

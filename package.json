@@ -21,6 +21,9 @@
     "less-middleware": "*",
     "express-validator": "*",
     "kue": "*",
-    "phantomjs": "*"
+    "phantom": "*",
+    "async": "*",
+    "node-inspector": "*",
+    "portscanner": "*"
   }
 }

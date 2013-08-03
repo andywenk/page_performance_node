@@ -15,7 +15,6 @@ html
             span.icon-bar
           a.brand(href='#') Pageperformance Node
           .nav-collapse.collapse
-            p.navbar-text.pull-right Logged in as Nobody
             ul.nav
               li
                 a(href="/") Home
@@ -37,6 +36,12 @@ html
                 a(href="/jobs/new") New Job
               li
                 a(href="/jobs/show") Show Jobs
+              li.nav-header Admin
+              li
+                a(href="http://localhost:4001", target="_blank") Kue
+              li
+                a(href="http://localhost:8081/", target="_blank") Redis
+
         .span9
           .hero-unit
             h1 Pageperformance Node
