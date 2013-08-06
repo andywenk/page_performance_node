@@ -1,3 +1,7 @@
+# models/phantom.coffee
+#
+# interface to PhantomJS
+
 class Phantom
   constructor: (url) ->
     @url = @sanitize(url)
@@ -20,12 +24,10 @@ class Phantom
               start = Date.now()
 
               page.open @url, (status) =>
-                console.log "[Phantom]: opened page: #{@url} on port #{freeport}"
                 if status != 'success'
                   console.log "[Phantom]: failed to load the address #{@url}"
                 else
                   @response_time = Date.now() - start
-                  console.log "[Phantom]: Loading time #{@response_time} msec"
                 ph.exit()
                 fn()
         )
