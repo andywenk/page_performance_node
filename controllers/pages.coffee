@@ -1,5 +1,6 @@
-# GET home page.
-
+# controllers/pages.coffee
+#
+# handle requests under pages
 
 exports.index = (req, res) ->
   res.render 'pages/index', { title: 'Index' }
@@ -9,4 +10,3 @@ exports.contact = (req, res) ->
 
 exports.about = (req, res) ->
   res.render 'pages/about', { title: 'About' }
-

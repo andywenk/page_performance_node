@@ -1,4 +1,6 @@
-# GET results
+# controllers/jobs.coffee
+#
+# handle requests under jobs
 
 exports.new = (req, res) ->
   res.render 'jobs/new', 
@@ -27,6 +29,3 @@ exports.create = (req, res) ->
     job.process()
 
     res.redirect '/jobs/show'
-
-
-
