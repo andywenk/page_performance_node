@@ -1,4 +1,6 @@
-jade = require 'jade'
+# models/form_validator.coffee
+#
+# validates various forms 
 
 class FormValidator
   constructor: (form_name) ->
