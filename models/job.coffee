@@ -1,3 +1,7 @@
+# models/job.coffee
+#
+# creates jobs in kue
+
 class Job
   constructor: (jobdata) ->
     @jobdata = jobdata
